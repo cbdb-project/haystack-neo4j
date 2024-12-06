@@ -3,6 +3,8 @@ from haystack.components.embedders import SentenceTransformersDocumentEmbedder
 from neo4j_haystack import Neo4jDocumentStore
 import time
 
+#Time spend in minutes:  931.9594766457875
+
 
 document_store = Neo4jDocumentStore(
     url="bolt://localhost:7687",
