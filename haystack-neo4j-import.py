@@ -2,16 +2,17 @@ from haystack import Document
 from haystack.components.embedders import SentenceTransformersDocumentEmbedder
 from neo4j_haystack import Neo4jDocumentStore
 import time
+from config import model_name, dimention
 
 #Time spend in minutes:  931.9594766457875
 
 
 document_store = Neo4jDocumentStore(
     url="bolt://localhost:7687",
-    username="neo4j",
-    password="passw0rd",
-    database="neo4j",
-    embedding_dim=384,
+    username="haystack",
+    password="haystack",
+    database="haystack",
+    embedding_dim=dimention,
     index="document-embeddings",
 )
 
@@ -22,6 +23,9 @@ time_checkpoint = time.time()
 with open('data.txt', 'r', encoding="utf-8") as file:
     input_text = file.readlines()
 print("Time spend in minutes: ", (time.time() - time_checkpoint)/60)
+
+# Sampling the data
+input_text = input_text[:200]
 
 print("2. Data read from file")
 time_checkpoint = time.time()
@@ -34,7 +38,8 @@ print("Time spend in minutes: ", (time.time() - time_checkpoint)/60)
 #
 print("3. Embedding documents")
 time_checkpoint = time.time()
-document_embedder = SentenceTransformersDocumentEmbedder(model="sentence-transformers/all-MiniLM-L6-v2") 
+# document_embedder = SentenceTransformersDocumentEmbedder(model="sentence-transformers/all-MiniLM-L6-v2") 
+document_embedder = SentenceTransformersDocumentEmbedder(model=model_name, trust_remote_code=True)
 print("Time spend in minutes: ", (time.time() - time_checkpoint)/60)
 
 print("4. Warming up")
