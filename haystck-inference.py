@@ -44,9 +44,9 @@ time_checkpoint = time.time()
 #)
 result = pipeline.run(
     data={
-        "text_embedder": {"text": "Chen Xiang"},
+        "text_embedder": {"text": "哪些人和王十朋有社會網絡關係？"},
         "retriever": {
-            "top_k": 5,
+            "top_k": 20,
         },
     }
 )
