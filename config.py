@@ -1,9 +1,12 @@
-model_name = "BAAI/bge-large-zh-v1.5"
-dimention = 1024
+model_name = "TencentBAC/Conan-embedding-v1"
+dimention = 1792
 
-# candidates list
-# Conan-embedding-v1
+# Candidates list
+# TencentBAC/Conan-embedding-v1
+# dimention = 1792
+
 # BAAI/bge-large-zh-v1.5
+# dimention = 1024
 
 # Future testing
 # 1. BAAI/bge-m3
